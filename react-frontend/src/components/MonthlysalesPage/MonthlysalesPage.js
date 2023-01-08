@@ -4,13 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import client from "../../services/restClient";
 import _ from "lodash";
 import { Button } from "primereact/button";
-import CustomersDatatable from "./CustomersDataTable";
-import CustomersEditDialogComponent from "./CustomersEditDialogComponent";
-import CustomersCreateDialogComponent from "./CustomersCreateDialogComponent";
-import "./customer.css";
+import MonthlysalesDatatable from "./MonthlysalesDataTable";
+import MonthlysalesEditDialogComponent from "./MonthlysalesEditDialogComponent";
+import MonthlysalesCreateDialogComponent from "./MonthlysalesCreateDialogComponent";
+import "./monthly.css";
 
-
-const CustomersPage = (props) => {
+const MonthlysalesPage = (props) => {
     const history = useHistory();
     const [data, setData] = useState([]);
     const [showEditDialog, setShowEditDialog] = useState(false);
@@ -19,14 +18,14 @@ const CustomersPage = (props) => {
     useEffect(() => {
         //on mount
         client
-            .service("customers")
+            .service("monthlysales")
             .find({ query: { $limit: 100 } })
             .then((res) => {
                 setData(res.data);
             })
             .catch((error) => {
                 console.log({ error });
-                props.alert({ title: "Customers", type: "error", message: error.message || "Failed get customers" });
+                props.alert({ title: "Monthlysales", type: "error", message: error.message || "Failed get monthlysales" });
             });
     }, []);
 
@@ -48,34 +47,34 @@ const CustomersPage = (props) => {
     const onRowDelete = async (index) => {
         setSelectedEntityIndex(null);
         try {
-            await client.service("customers").remove(data[index]?._id);
+            await client.service("monthlysales").remove(data[index]?._id);
             let _newData = data.filter((_, i) => i !== index);
             setData(_newData);
         } catch (error) {
             console.log({ error });
-            props.alert({ title: "Customers", type: "error", message: error.message || "Failed delete record" });
+            props.alert({ title: "Monthlysales", type: "error", message: error.message || "Failed delete record" });
         }
     };
 
     const onRowClick = (e) => {
         console.log("e", e);
     };
-
     return (
-        <div className="box_customer col-12 flex flex-column align-items-center">
+        <div className="col-12 flex flex-column align-items-center box_monthly">
             <div className="col-10">
-                <h3 className="mb-0 ml-2">Contacts</h3>
+                <h3 className="mb-0 ml-2">Monthlysales</h3>
                 <div className="col flex justify-content-end">
                     <Button label="add" icon="pi pi-plus" onClick={() => setShowCreateDialog(true)} />
                 </div>
             </div>
             <div className="grid col-10">
                 <div className="col-12">
-                    <CustomersDatatable items={data} onRowDelete={onRowDelete} onEditRow={onEditRow} onRowClick={onRowClick}/>
+                    <MonthlysalesDatatable items={data} onRowDelete={onRowDelete} onEditRow={onEditRow} onRowClick={onRowClick}/>
+                    {/* <MonthlysalesChart labels={data} loop={data}/> */}
                 </div>
             </div>
-            <CustomersEditDialogComponent entity={data[selectedEntityIndex]} show={showEditDialog} onHide={() => setShowEditDialog(false)} onEditResult={onEditResult} />
-            <CustomersCreateDialogComponent show={showCreateDialog} onHide={() => setShowCreateDialog(false)} onCreateResult={onCreateResult} />
+            <MonthlysalesEditDialogComponent entity={data[selectedEntityIndex]} show={showEditDialog} onHide={() => setShowEditDialog(false)} onEditResult={onEditResult} />
+            <MonthlysalesCreateDialogComponent show={showCreateDialog} onHide={() => setShowCreateDialog(false)} onCreateResult={onCreateResult} />
         </div>
     );
 };
@@ -87,4 +86,4 @@ const mapDispatch = (dispatch) => ({
     //
 });
 
-export default connect(mapState, mapDispatch)(CustomersPage);
+export default connect(mapState, mapDispatch)(MonthlysalesPage);

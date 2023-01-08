@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import { InputText } from 'primereact/inputtext';
 
 
- 
+
 const getSchemaValidationErrorsStrings = (errorObj) => {
     let errMsg = [];
     for (const key in errorObj.errors) {
@@ -36,11 +36,6 @@ const CustomersCreateDialogComponent = (props) => {
             custphonenumber: _entity.custphonenumber,
             custemail: _entity.custemail,
             custcompany: _entity.custcompany,
-            addcustname: _entity.addcustname,
-            addcustphonenumber: _entity.addcustphonenumber,
-            addcustemail: _entity.addcustemail,
-            addcustcompany: _entity.addcustcompany
-
         };
 
         setLoading(true);
@@ -86,26 +81,9 @@ const CustomersCreateDialogComponent = (props) => {
                     <InputText className="w-full mb-3" value={_entity?.custemail} onChange={(e) => setValByKey("custemail", e.target.value)}  />
                 </div>
                 <div>
-                    <p className="m-0" >custcompany:</p>
+                    <p className="m-0" >Customer Company:</p>
                     <InputText className="w-full mb-3" value={_entity?.custcompany} onChange={(e) => setValByKey("custcompany", e.target.value)}  />
                 </div>
-                <div>
-                    <p className="m-0" >Customer Name:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addcustname} onChange={(e) => setValByKey("addcustname", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Customer Phone Number:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addcustphonenumber} onChange={(e) => setValByKey("addcustphonenumber", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Customer Email:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addcustemail} onChange={(e) => setValByKey("addcustemail", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Customer Company:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addcustcompany} onChange={(e) => setValByKey("addcustcompany", e.target.value)}  />
-                </div>
-
 
                 <small className="p-error">
                     {Array.isArray(error)

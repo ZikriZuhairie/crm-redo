@@ -1,0 +1,42 @@
+.box_dashboard{
+    margin-left: 13vw;
+    width: 80vw;
+    height: 85vh;
+    background-color: transparent;
+}
+
+.card_container{
+    display: flex;
+    margin-top: 6vh;
+    margin-left: 11vw;
+}
+.p-card{
+    width: 14vw;
+    height: 16vh;
+    margin-right: 12px;
+}
+
+.secondrow_container{
+    margin-left: 11vw !important;
+    margin-top: 20px;
+    margin-bottom: 130px;
+    background: white;
+    border-radius: 10px;
+    width: 58vw;
+    height: 50vh;
+}
+.thirdrow_container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 11vw !important;
+    margin-top: 20px;
+}
+.tasknnotes_container{
+    margin-top: 20px;
+    margin-bottom: 50px !important;
+    margin-right: 12px;
+    background: white;
+    border-radius: 10px;
+    width: 550px;
+    height: 540px;
+}

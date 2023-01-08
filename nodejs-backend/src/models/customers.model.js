@@ -11,10 +11,6 @@ module.exports = function (app) {
        custphonenumber: { type: String, required: false },
        custemail: { type: String },
        custcompany: { type: String },
-       addcustname: { type: String },
-       addcustphonenumber: { type: String },
-       addcustemail: { type: String },
-       addcustcompany: { type: String },
 
     }
       // ~cb-read-end~

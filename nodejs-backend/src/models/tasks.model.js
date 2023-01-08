@@ -9,8 +9,6 @@ module.exports = function (app) {
       {
        taskcontent: { type: String },
        taskpriority: { type: String },
-       addtaskcontent: { type: String },
-       addtaskpriority: { type: String },
 
     }
       // ~cb-read-end~

@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import { InputText } from 'primereact/inputtext';
 
 
- 
+
 const getSchemaValidationErrorsStrings = (errorObj) => {
     let errMsg = [];
     for (const key in errorObj.errors) {
@@ -34,8 +34,6 @@ const TasksCreateDialogComponent = (props) => {
         let _data = {
             taskcontent: _entity.taskcontent,
             taskpriority: _entity.taskpriority,
-            addtaskcontent: _entity.addtaskcontent,
-            addtaskpriority: _entity.addtaskpriority
 
         };
 
@@ -77,15 +75,6 @@ const TasksCreateDialogComponent = (props) => {
                     <p className="m-0" >Task Priority:</p>
                     <InputText className="w-full mb-3" value={_entity?.taskpriority} onChange={(e) => setValByKey("taskpriority", e.target.value)}  />
                 </div>
-                <div>
-                    <p className="m-0" >Task Content:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addtaskcontent} onChange={(e) => setValByKey("addtaskcontent", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Task Priority:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addtaskpriority} onChange={(e) => setValByKey("addtaskpriority", e.target.value)}  />
-                </div>
-
 
                 <small className="p-error">
                     {Array.isArray(error)

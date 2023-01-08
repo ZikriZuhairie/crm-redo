@@ -11,10 +11,6 @@ module.exports = function (app) {
        companycontactnumber: { type: String },
        companycontactemail: { type: String },
        companydesc: { type: String },
-       addcompanyname: { type: String },
-       addcompanycontactnumber: { type: String },
-       addcompanycontactemail: { type: String },
-       addcompanydesc: { type: String },
 
     }
       // ~cb-read-end~

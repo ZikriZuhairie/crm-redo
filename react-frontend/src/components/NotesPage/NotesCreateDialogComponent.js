@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import { InputText } from 'primereact/inputtext';
 
 
- 
+
 const getSchemaValidationErrorsStrings = (errorObj) => {
     let errMsg = [];
     for (const key in errorObj.errors) {
@@ -33,10 +33,7 @@ const NotesCreateDialogComponent = (props) => {
     const onSave = async () => {
         let _data = {
             notecontent: _entity.notecontent,
-            notepriority: _entity.notepriority,
-            addnotecontent: _entity.addnotecontent,
-            addnotepriority: _entity.addnotepriority
-
+            notepriority: _entity.notepriority
         };
 
         setLoading(true);
@@ -77,15 +74,6 @@ const NotesCreateDialogComponent = (props) => {
                     <p className="m-0" >Note Priority:</p>
                     <InputText className="w-full mb-3" value={_entity?.notepriority} onChange={(e) => setValByKey("notepriority", e.target.value)}  />
                 </div>
-                <div>
-                    <p className="m-0" >Note Content:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addnotecontent} onChange={(e) => setValByKey("addnotecontent", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Note Priority:</p>
-                    <InputText className="w-full mb-3" value={_entity?.addnotepriority} onChange={(e) => setValByKey("addnotepriority", e.target.value)}  />
-                </div>
-
 
                 <small className="p-error">
                     {Array.isArray(error)

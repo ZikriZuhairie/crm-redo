@@ -9,8 +9,6 @@ module.exports = function (app) {
       {
        notecontent: { type: String },
        notepriority: { type: String },
-       addnotecontent: { type: String },
-       addnotepriority: { type: String },
 
     }
       // ~cb-read-end~

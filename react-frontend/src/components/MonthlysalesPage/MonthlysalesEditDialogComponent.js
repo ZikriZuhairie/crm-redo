@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import client from "../../services/restClient";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
+
 import { InputText } from 'primereact/inputtext';
 
 
@@ -21,33 +22,33 @@ const getSchemaValidationErrorsStrings = (errorObj) => {
     return errMsg.length ? errMsg : errorObj.message ? errorObj.message : null;
 };
 
-const CompanyCreateDialogComponent = (props) => {
+const MonthlysalesCreateDialogComponent = (props) => {
     const [_entity, set_entity] = useState({});
     const [error, setError] = useState("");
 
     const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        set_entity({})
-    },[props.show])
+    useEffect(() => {
+        set_entity(props.entity);
+    }, [props.entity, props.show]);
+
     const onSave = async () => {
         let _data = {
-            companyname: _entity.companyname,
-            companycontactnumber: _entity.companycontactnumber,
-            companycontactemail: _entity.companycontactemail,
-            companydesc: _entity.companydesc,
+            months: _entity.months,
+            totalsales: _entity.totalsales
+
         };
 
         setLoading(true);
         try {
-            const result = await client.service("company").create(_data);
+            const result = await client.service("monthlysales").patch(_entity._id, _data);
             props.onHide();
-            props.alert({ type: "success", title: "Create", message: "Created successfully" });
-            props.onCreateResult(result);
+            props.alert({ type: "success", title: "Edit info", message: "Info updated successfully" });
+            props.onEditResult(result);
         } catch (error) {
             console.log("error", error);
-            setError(getSchemaValidationErrorsStrings(error) || "Failed to create");
-            props.alert({ type: "error", title: "Create", message: "Failed to create" });
+            setError(getSchemaValidationErrorsStrings(error) || "Failed to update info");
+            props.alert({ type: "error", title: "Edit info", message: "Failed to update info" });
         }
         setLoading(false);
     };
@@ -66,24 +67,17 @@ const CompanyCreateDialogComponent = (props) => {
     };
 
     return (
-        <Dialog header="Create" visible={props.show} closable={false} onHide={props.onHide} modal style={{ width: "40vw" }} className="min-w-max" footer={renderFooter()} resizable={false}>
+        <Dialog header="Edit Info" visible={props.show} closable={false} onHide={props.onHide} modal style={{ width: "40vw" }} className="min-w-max" footer={renderFooter()} resizable={false}>
             <div>
                 <div>
-                    <p className="m-0" >Company Name:</p>
-                    <InputText className="w-full mb-3" value={_entity?.companyname} onChange={(e) => setValByKey("companyname", e.target.value)}  />
+                    <p className="m-0" > Month:</p>
+                    <InputText className="w-full mb-3" value={_entity?.months} onChange={(e) => setValByKey("months", e.target.value)}  />
                 </div>
                 <div>
-                    <p className="m-0" >Company Contact Number:</p>
-                    <InputText className="w-full mb-3" value={_entity?.companycontactnumber} onChange={(e) => setValByKey("companycontactnumber", e.target.value)}  />
+                    <p className="m-0" >Total Sales:</p>
+                    <InputText type="number" className="w-full mb-3" value={_entity?.totalsales} onChange={(e) => setValByKey("totalsales", e.target.value)}  />
                 </div>
-                <div>
-                    <p className="m-0" >Company Contact Email:</p>
-                    <InputText className="w-full mb-3" value={_entity?.companycontactemail} onChange={(e) => setValByKey("companycontactemail", e.target.value)}  />
-                </div>
-                <div>
-                    <p className="m-0" >Company Description:</p>
-                    <InputText className="w-full mb-3" value={_entity?.companydesc} onChange={(e) => setValByKey("companydesc", e.target.value)}  />
-                </div>
+
 
                 <small className="p-error">
                     {Array.isArray(error)
@@ -106,5 +100,5 @@ const mapDispatch = (dispatch) => ({
     alert: (data) => dispatch.toast.alert(data),
 });
 
-export default connect(null, mapDispatch)(CompanyCreateDialogComponent);
+export default connect(null, mapDispatch)(MonthlysalesCreateDialogComponent);
 // createDialog_code.template

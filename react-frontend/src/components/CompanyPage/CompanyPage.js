@@ -7,6 +7,7 @@ import { Button } from "primereact/button";
 import CompanyDatatable from "./CompanyDataTable";
 import CompanyEditDialogComponent from "./CompanyEditDialogComponent";
 import CompanyCreateDialogComponent from "./CompanyCreateDialogComponent";
+import "./company.css";
 
 const CompanyPage = (props) => {
     const history = useHistory();
@@ -54,13 +55,13 @@ const CompanyPage = (props) => {
             props.alert({ title: "Company", type: "error", message: error.message || "Failed delete record" });
         }
     };
-    
+
     const onRowClick = (e) => {
         console.log("e", e);
     };
 
     return (
-        <div className="col-12 flex flex-column align-items-center">
+        <div className="box_company col-12 flex flex-column align-items-center">
             <div className="col-10">
                 <h3 className="mb-0 ml-2">Company</h3>
                 <div className="col flex justify-content-end">

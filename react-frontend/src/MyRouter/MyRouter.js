@@ -4,6 +4,7 @@ import { Route, useLocation, useHistory, Switch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 import AppTopbar from "../AppTopbar";
+import AppSideMenu from "../AppSideMenu";
 import { AppFooter } from "../AppFooter";
 import { AppMenu } from "../AppMenu";
 import { AppConfigStatic } from "../AppConfigStatic";
@@ -36,6 +37,7 @@ import CustomersPage from "../components/CustomersPage/CustomersPage";
 import CompanyPage from "../components/CompanyPage/CompanyPage";
 import NotesPage from "../components/NotesPage/NotesPage";
 import TasksPage from "../components/TasksPage/TasksPage";
+import MonthlysalesPage from "../components/MonthlysalesPage/MonthlysalesPage";
 // ~cb-add-import~
 
 const MyRouter = () => {
@@ -162,6 +164,7 @@ const MyRouter = () => {
         // <div>
         <div className={wrapperClass} onClick={onWrapperClick}>
             {location.pathname === "/login" ? null : (
+                <>
                 <AppTopbar
                     onToggleMenuClick={onToggleMenuClick}
                     layoutColorMode={layoutColorMode}
@@ -170,8 +173,10 @@ const MyRouter = () => {
                     onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick}
                     // onAccount={() => history.push("/account")}
                     // onSettings={() => history.push("/settings")}
-                />
-            )}
+                    />
+                <AppSideMenu/>
+                </>
+                    )}
 
             {/* <div className="layout-sidebar" onClick={onSidebarClick}>
                 <AppMenu model={menu} onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
@@ -188,11 +193,11 @@ const MyRouter = () => {
                     <Route path="/company" component={CompanyPage} />
                     <Route path="/notes" component={NotesPage} />
                     <Route path="/tasks" component={TasksPage} />
+                    <Route path="/chart" component={MonthlysalesPage}/>
                     {/* ~cb-add-route~ */}
 
                     <Route path="*" component={NoMatch} />
                 </Switch>
-                <AppFooter layoutColorMode={layoutColorMode} />
             </MainLayout>
             <LoadingWrapper />
             <ToastWrapper />
