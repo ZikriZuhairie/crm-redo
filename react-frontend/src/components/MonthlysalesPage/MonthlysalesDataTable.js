@@ -25,4 +25,4 @@ const MonthlysalesDataTable = ({ items, onEditRow, onRowDelete, onRowClick }) =>
     );
 };
 
-export default MonthlysalesDataTable;
+export default MonthlysalesDataTable; 

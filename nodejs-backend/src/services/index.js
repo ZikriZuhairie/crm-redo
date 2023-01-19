@@ -4,6 +4,7 @@ const company = require("./company/company.service.js");
 const notes = require("./notes/notes.service.js");
 const tasks = require("./tasks/tasks.service.js");
 const monthlysales = require("./monthlysales/monthlysales.service.js");
+const opportunity = require("./opportunity/opportunity.service.js");
 // ~cb-add-require-service-name~
 
 // eslint-disable-next-line no-unused-vars
@@ -14,5 +15,6 @@ module.exports = function (app) {
   app.configure(notes);
   app.configure(tasks);
   app.configure(monthlysales);
+  app.configure(opportunity);
   // ~cb-add-configure-service-name~
 };

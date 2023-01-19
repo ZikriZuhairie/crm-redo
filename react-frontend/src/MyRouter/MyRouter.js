@@ -38,6 +38,8 @@ import CompanyPage from "../components/CompanyPage/CompanyPage";
 import NotesPage from "../components/NotesPage/NotesPage";
 import TasksPage from "../components/TasksPage/TasksPage";
 import MonthlysalesPage from "../components/MonthlysalesPage/MonthlysalesPage";
+import OpportunityPage from "../components/OpportunityPage/OpportunityPage";
+import KanbanPage from "../components/KanbanPage/KanbanPage";
 // ~cb-add-import~
 
 const MyRouter = () => {
@@ -194,6 +196,8 @@ const MyRouter = () => {
                     <Route path="/notes" component={NotesPage} />
                     <Route path="/tasks" component={TasksPage} />
                     <Route path="/chart" component={MonthlysalesPage}/>
+                    <Route path="/kanban" component={KanbanPage} />
+                    <Route path="/opportunity" component={OpportunityPage} />
                     {/* ~cb-add-route~ */}
 
                     <Route path="*" component={NoMatch} />

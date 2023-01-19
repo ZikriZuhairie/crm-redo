@@ -42,6 +42,20 @@ const AppSideMenu = () => {
                 window.location = "/chart";
             },
         },
+        {
+            label: "Kanban Board",
+            icon: "pi pi-fw pi-check-square",
+            command: (e) => {
+                window.location = "/kanban";
+            },
+        },
+        {
+            label: "Opportunity",
+            icon: "pi pi-fw pi-wallet",
+            command: (e) => {
+                window.location = "/opportunity";
+            },
+        },
     ];
 
     return (
